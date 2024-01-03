@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:14
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: krya
+      POSTGRES_PASSWORD: P@ssword123
+      POSTGRES_DB: postgres
+    ports:
+      - '2204:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+
+#  spring-app:
+#    container_name: spring-app
+#    build:
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8088:8080"
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/postgres
+#      SPRING_DATASOURCE_USERNAME: krya
+#      SPRING_DATASOURCE_PASSWORD: P@ssword123
+#    depends_on:
+#      - db
+
+volumes:
+  db:
